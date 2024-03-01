@@ -1,0 +1,200 @@
+openapi: 3.0.3
+
+info:
+  title: common
+  version: n/a
+
+paths: { }
+
+components:
+  schemas:
+    IntType:
+      type: integer
+      format: int32
+      example: 1
+
+    NullableIntType:
+      type: integer
+      format: int32
+      nullable: true
+      example: 1
+
+    LongType:
+      type: integer
+      format: int64
+      example: 1
+
+    NullableLongType:
+      type: integer
+      format: int64
+      nullable: true
+      example: 1
+
+    StringType:
+      type: string
+      example: 'foo'
+
+    NullableStringType:
+      type: string
+      nullable: true
+      example: 'foo'
+
+    UUIDType:
+      type: string
+      format: uuid
+      example: 00000000-0000-0000-0000-000000000000
+
+    NullableUUIDType:
+      type: string
+      format: uuid
+      nullable: true
+      example: 00000000-0000-0000-0000-000000000000
+
+    BooleanType:
+      type: boolean
+      default: false
+
+    UriType:
+      type: string
+      format: uri
+      example: 'about:blank'
+
+    NullableUriType:
+      type: string
+      format: uri
+      nullable: true
+      example: 'about:blank'
+
+    DateTimeType:
+      type: string
+      format: date-time
+      example: '2018-12-01T10:00:00Z'
+
+    NullableDateTimeType:
+      type: string
+      format: date-time
+      nullable: true
+      example: '2018-12-01T10:00:00Z'
+
+    DateTimeRange:
+      type: object
+      properties:
+        from:
+          $ref: '#/components/schemas/DateTimeType'
+        to:
+          $ref: '#/components/schemas/DateTimeType'
+
+    NullableDateTime:
+      type: object
+      properties:
+        from:
+          $ref: '#/components/schemas/NullableDateTimeType'
+        to:
+          $ref: '#/components/schemas/NullableDateTimeType'
+
+    DateType:
+      type: string
+      format: date
+      example: '2018-12-01'
+
+    NullableDateType:
+      type: string
+      format: date
+      nullable: true
+      example: '2018-12-01'
+
+    DateRange:
+      type: object
+      properties:
+        from:
+          $ref: '#/components/schemas/DateType'
+        to:
+          $ref: '#/components/schemas/DateType'
+
+    NullableDateRange:
+      type: object
+      properties:
+        from:
+          $ref: '#/components/schemas/NullableDateType'
+        to:
+          $ref: '#/components/schemas/NullableDateType'
+
+    Page:
+      type: object
+      properties:
+        size:
+          type: integer
+          format: int32
+          default: 50
+          example: 50
+        totalElements:
+          type: integer
+          format: int64
+          example: 100
+        totalPages:
+          type: integer
+          format: int32
+          example: 2
+        number:
+          type: integer
+          format: int32
+          default: 1
+          example: 1
+
+  responses:
+    Created:
+      description: Created
+
+    Accepted:
+      description: Accepted
+
+    NoContent:
+      description: No Content
+
+    EmptyContent:
+      description: No Content
+      content:
+        application/json: { }
+
+    BadRequest:
+      description: Bad Request
+      content:
+        application/problem+json:
+          schema:
+            type: FlexErrorBody
+
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/problem+json:
+          schema:
+            type: FlexErrorBody
+
+    Forbidden:
+      description: Forbidden
+      content:
+        application/problem+json:
+          schema:
+            type: FlexErrorBody
+
+    NotFound:
+      description: Not Found
+      content:
+        application/problem+json:
+          schema:
+            type: FlexErrorBody
+
+    Conflict:
+      description: Conflict
+      content:
+        application/problem+json:
+          schema:
+            type: FlexErrorBody
+
+    ServerError:
+      description: Internal Server Error
+      content:
+        application/problem+json:
+          schema:
+            type: FlexErrorBody
+
